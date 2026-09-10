@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Hub Platform</title>
+    <!-- Importing Montserrat for premium bold text weights -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background-color: #191B1D;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Top Bar Header */
+        .app-header {
+            background-color: #232527;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #2B2D30;
+            z-index: 10;
+        }
+        
+        /* Ultra bold logo */
+        .logo {
+            font-weight: 900; 
+            font-size: 24px;
+            color: #FFF;
+            text-transform: uppercase;
+            letter-spacing: -1.5px;
+            margin-right: 40px;
+        }
+
+        .nav-links a {
+            color: #CDCDCD;
+            text-decoration: none;
+            margin-right: 25px;
+            font-weight: 700; /* Bold Link Style */
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { 
+            color: #00B06F; 
+        }
+
+        /* Workspace Wrapper for Sidebar + Content */
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 54px);
+        }
+
+        /* Left Hand Navigation Sidebar */
+        .sidebar {
+            width: 240px;
+            background-color: #232527;
+            border-right: 2px solid #2B2D30;
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            color: #E8E8E8;
+            text-decoration: none;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-weight: 700; /* Bold Sidebar Text */
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+        .sidebar-item:hover, .sidebar-item.active {
+            background-color: #393B3D;
+            color: #FFF;
+        }
+
+        /* Main Scrollable Dashboard Content */
+        .content-area {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+        
+        .section-title { 
+            font-size: 28px; 
+            font-weight: 900; /* Extra Bold Headers */
+            margin-bottom: 15px; 
+            color: #FFF; 
+            letter-spacing: -0.5px;
+        }
+
+        .welcome-text {
+            font-size: 16px;
+            color: #AAAEB3;
+            line-height: 1.6;
+            font-weight: 400;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation Section -->
+    <header class="app-header">
+        <div class="logo">Dashboard</div>
+        <nav class="nav-links">
+            <a href="#">Overview</a>
+            <a href="#">Projects</a>
+            <a href="#">Settings</a>
+        </nav>
+    </header>
+
+    <!-- App Space Layout -->
+    <div class="main-wrapper">
+        
+        <!-- Left Sidebar Options -->
+        <aside class="sidebar">
+            <a href="#" class="sidebar-item active">🏠 Home</a>
+            <a href="#" class="sidebar-item">📁 Documents</a>
+            <a href="#" class="sidebar-item">📝 Notes</a>
+            <a href="#" class="sidebar-item">👤 Profile</a>
+        </aside>
+
+        <!-- Main Window Container -->
+        <main class="content-area">
+            <h2 class="section-title">Welcome to Your Platform</h2>
+            <p class="welcome-text">
+                This is a blank workspace template. All gaming components have been completely stripped out. You can now customize this main content panel with text paragraphs, forms, custom widgets, or layout modules tailored to your project.
+            </p>
+        </main>
+        
+    </div>
+
+</body>
+</html>
