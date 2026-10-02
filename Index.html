@@ -3,97 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roblox Web Portal</title>
+    <title>My Hub Platform</title>
+    <!-- Importing Montserrat for premium bold text weights -->
+    <link href="https://google.com" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; }
-        body, html {
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background-color: #191B1D;
+            color: #FFFFFF;
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #0c0c0c;
-            font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
+            height: 100vh;
             overflow: hidden;
         }
-        /* Top Navigation Header */
-        .nav-header {
-            height: 50px;
-            background-color: #181818;
-            border-bottom: 2px solid #ff1e27;
+
+        /* Top Bar Header */
+        .app-header {
+            background-color: #232527;
+            padding: 12px 24px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            color: #ffffff;
+            border-bottom: 2px solid #2B2D30;
+            z-index: 10;
         }
+        
+        /* Ultra bold logo */
         .logo {
-            font-weight: bold;
-            color: #ff1e27;
-            font-size: 18px;
-            letter-spacing: 1px;
+            font-weight: 900; 
+            font-size: 24px;
+            color: #FFF;
+            text-transform: uppercase;
+            letter-spacing: -1.5px;
+            margin-right: 40px;
         }
-        .status-txt {
-            font-size: 12px;
-            color: #888;
+
+        .nav-links a {
+            color: #CDCDCD;
+            text-decoration: none;
+            margin-right: 25px;
+            font-weight: 700; /* Bold Link Style */
+            font-size: 14px;
+            transition: color 0.2s;
         }
-        .refresh-btn {
-            background-color: #ff1e27;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
+        .nav-links a:hover { 
+            color: #00B06F; 
         }
-        .refresh-btn:hover {
-            background-color: #d6151c;
+
+        /* Workspace Wrapper for Sidebar + Content */
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 54px);
         }
-        /* Full Screen Game Box */
-        .game-frame-container {
-            flex-grow: 1;
-            width: 100%;
-            height: calc(100% - 50px);
-            background-color: #000;
+
+        /* Left Hand Navigation Sidebar */
+        .sidebar {
+            width: 240px;
+            background-color: #232527;
+            border-right: 2px solid #2B2D30;
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            color: #E8E8E8;
+            text-decoration: none;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-weight: 700; /* Bold Sidebar Text */
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+        .sidebar-item:hover, .sidebar-item.active {
+            background-color: #393B3D;
+            color: #FFF;
+        }
+
+        /* Main Scrollable Dashboard Content */
+        .content-area {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+        
+        .section-title { 
+            font-size: 28px; 
+            font-weight: 900; /* Extra Bold Headers */
+            margin-bottom: 15px; 
+            color: #FFF; 
+            letter-spacing: -0.5px;
+        }
+
+        .welcome-text {
+            font-size: 16px;
+            color: #AAAEB3;
+            line-height: 1.6;
+            font-weight: 400;
+            max-width: 600px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Interface -->
-    <div class="nav-header">
-        <span class="logo">🟥 ROBLOX PORTAL</span>
-        <span class="status-txt" id="loading-status">System Standing By...</span>
-        <button class="refresh-btn" onclick="reloadRoblox()">Force Reload</button>
+    <!-- Header Navigation Section -->
+    <header class="app-header">
+        <div class="logo">Dashboard</div>
+        <nav class="nav-links">
+            <a href="#">Overview</a>
+            <a href="#">Projects</a>
+            <a href="#">Settings</a>
+        </nav>
+    </header>
+
+    <!-- App Space Layout -->
+    <div class="main-wrapper">
+        
+        <!-- Left Sidebar Options -->
+        <aside class="sidebar">
+            <a href="#" class="sidebar-item active">🏠 Home</a>
+            <a href="#" class="sidebar-item">📁 Documents</a>
+            <a href="#" class="sidebar-item">📝 Notes</a>
+            <a href="#" class="sidebar-item">👤 Profile</a>
+        </aside>
+
+        <!-- Main Window Container -->
+        <main class="content-area">
+            <h2 class="section-title">Welcome to Your Platform</h2>
+            <p class="welcome-text">
+                This is a blank workspace template. All gaming components have been completely stripped out. You can now customize this main content panel with text paragraphs, forms, custom widgets, or layout modules tailored to your project.
+            </p>
+        </main>
+        
     </div>
-
-    <!-- Active Roblox Cloud Container -->
-    <div class="game-frame-container">
-        <iframe 
-            id="roblox-screen" 
-            src="https://now.gg/games/roblox-mini-games.html" 
-            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock">
-        </iframe>
-    </div>
-
-    <script>
-        // Visual indicator that client is processing
-        window.addEventListener('load', () => {
-            document.getElementById('loading-status').innerText = "Streaming online engine client...";
-        });
-
-        function reloadRoblox() {
-            const frame = document.getElementById('roblox-screen');
-            frame.src = frame.src;
-            document.getElementById('loading-status').innerText = "Re-establishing connection loop...";
-        }
-    </script>
 
 </body>
 </html>
